@@ -1,15 +1,31 @@
 const { MongoClient } = require("mongodb");
-require("dotenv").config();
+const dbConfig = require("../constants/db_config");
 
-const url = `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@${process.env.DB_HOST}:${process.env.MONGODB_DOCKER_PORT}/${process.env.MONGODB_DATABASE}?authSource=admin`
+const url = "mongodb://".concat(
+  dbConfig.user,
+  ":",
+  dbConfig.password,
+  "@",
+  dbConfig.host,
+  ":",
+  dbConfig.port,
+  "/",
+  dbConfig.dataBaseName,
+  "?authSource=admin"
+);
+
 const client = new MongoClient(url);
-const dbName = process.env.DB_NAME;
 
 async function connectMongoDB() {
   await client.connect();
   console.log("Connected successfully to server");
   const db = client.db(dbName);
   const collection = db.collection("documents");
+  console.log(
+    "🚀 ~ file: database.js ~ line 24 ~ connectMongoDB ~ collection",
+    collection
+  );
+
   return "done.";
 }
 
