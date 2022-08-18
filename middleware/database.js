@@ -19,7 +19,7 @@ const client = new MongoClient(url);
 async function connectMongoDB() {
   await client.connect();
   console.log("Connected successfully to server");
-  const db = client.db(dbName);
+  const db = client.db(dbConfig.dataBaseName);
   const collection = db.collection("documents");
   console.log(
     "🚀 ~ file: database.js ~ line 24 ~ connectMongoDB ~ collection",
