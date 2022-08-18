@@ -4,7 +4,7 @@
   "description": "a startup project for node js with mongo db",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon -L --inspect=0.0.0.0 app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

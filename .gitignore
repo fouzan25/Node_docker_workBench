@@ -1,3 +1,7 @@
 .env*
 /.vscode
 /node_modules
+node_modules
+db
+/db
+.DS_Store
