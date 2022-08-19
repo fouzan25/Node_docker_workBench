@@ -1,8 +1,12 @@
 require("dotenv").config();
 const express = require("express");
-const mongoConnect = require("./middleware/database");
+const constants = require("./constants/config");
+const mongoose = require("mongoose");
 const app = express();
-
-mongoConnect().then(console.log).catch(console.error);
-
-app.listen(process.env.NODE_DOCKER_PORT || 3000);
+mongoose
+  .connect(constants.url)
+  .then(() => {
+    console.log("connected");
+    app.listen(constants.config.nodePort || 3000);
+  })
+  .catch((e) => console.log(e));

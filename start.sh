@@ -1,9 +1,9 @@
 #!/bin/bash
 docker-compose down
 echo "Starting app..."
-docker-compose up -d
+docker-compose up --build -d
 
-sleep 2
+sleep 
 
 echo "Node App running http://localhost:6868/"
 echo "loggs are coming soon be mentally prepared :) ..."
