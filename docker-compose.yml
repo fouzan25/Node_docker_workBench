@@ -23,8 +23,7 @@ services:
       - mongodb
     restart: unless-stopped
     volumes:
-      - ./:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./app-data:/usr/src/app
     networks:
       - dl-net
 
@@ -38,13 +37,13 @@ services:
     ports:
       - $MONGODB_LOCAL_PORT:27017
     volumes:
-      - db:/data/db
+      - ./mong-db-data:/data/db
     networks:
       - dl-net
 
-volumes:
-  app-data:
-  db:
+# volumes:
+#   app-data:
+#   db:
 
 networks:
   dl-net:
